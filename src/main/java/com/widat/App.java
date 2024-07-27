@@ -3,6 +3,8 @@ package com.widat;
 import com.widat.entity.Response;
 import com.widat.service.InstallmentCalculation;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.text.NumberFormat;
 import java.util.*;
 
@@ -12,10 +14,16 @@ import java.util.*;
  */
 public class App
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) throws FileNotFoundException {
         InstallmentCalculation installmentCalculation = new InstallmentCalculation();
-        Scanner scanner = new Scanner(System.in);
+        Scanner  scanner = new Scanner(System.in);
+        if (args.length > 0) {
+            File file = new File(args[0]);
+            if (file.exists()) {
+                scanner = new Scanner(file);
+            }
+        }
+
         int choice = 0;
         boolean isChoiceValid = false;
 
@@ -141,7 +149,7 @@ public class App
                     } while (!isDownPaymentValid);
 
                     List<Response> result = installmentCalculation.calc(vehicle, loanTotal, loanTenor);
-
+                    System.out.println();
                     for(Response response : result){
                         response.print();
                     }

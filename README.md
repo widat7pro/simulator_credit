@@ -1,13 +1,14 @@
-# credit_simulator
-jar sample for credit_simulator
+### how to build project
+for build project, type this command :
 
+	> mvn clean install
+### how run *.jar file
+after build this project, target folder is generated automatic, for run try this program, go to inner target folder then run :
 
+	> ./java -jar simulator-credit-1.0-SNAPSHOT.jar
+![test 1](./test1.jpg)
+### how run *.jar file with file_inputs.txt
+for run this program with parameter, run this command :
 
-Requirement : 
-java 1.8 or above
-use command : 
-$ java -jar credit_simulator.jar
-
-
-#WebServices EndPoint Url Update MockyIO Updates : 
-http://www.mocky.io/v2/5d11a58d310000b23508cd62
+	> java -jar simulator-credit-1.0-SNAPSHOT.jar ../file_inputs.txt
+![test 2](./test2.jpg)

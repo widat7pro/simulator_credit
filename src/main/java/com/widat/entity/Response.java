@@ -25,6 +25,6 @@ public class Response extends BaseResponse implements PrintableResponse{
 
     @Override
     public void print() {
-        System.out.printf("tahun %d : %s/bln , Suku Bunga %.2f%% \n", getIndexResponse(), CurrencyFormat.formatToRupiah(getMonthlyInstallment()), getRate());
+        System.out.printf("tahun %d : %s/bln , Suku Bunga %.2f%% \n", (getIndexResponse()+1), CurrencyFormat.formatToRupiah(getMonthlyInstallment()), getRate());
     }
 }
