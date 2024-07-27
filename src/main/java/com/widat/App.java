@@ -106,13 +106,13 @@ public class App
                     } while (!isLoadTenorValid);
 
                     do {
-                        System.out.print("Input Jumlah DP : ");
+                        System.out.print("Input Jumlah DP (%) : ");
                         try {
                             downPayment = Integer.parseInt(scanner.nextLine());
-                            if (downPayment > 0 && downPayment <= 1000000000) {
+                            if (downPayment >= 0 && downPayment <= 100) {
                                 isDownPaymentValid = true;
                             } else {
-                                System.out.println("system : yang diperbolehkan hanya kurang dari sama dengan 1 miliar");
+                                System.out.println("system : nilai yang diperbolehkan dari 0 - 100");
                             }
                         } catch (Exception e) {
                             System.out.println("system : mohon periksa kembali input yang Anda masukan");
