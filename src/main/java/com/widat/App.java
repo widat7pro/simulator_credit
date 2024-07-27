@@ -110,7 +110,13 @@ public class App
                         try {
                             downPayment = Integer.parseInt(scanner.nextLine());
                             if (downPayment >= 0 && downPayment <= 100) {
-                                isDownPaymentValid = true;
+                                if(state.equalsIgnoreCase("baru") && downPayment < 35 ){
+                                    System.out.println("system : untuk motor/mobil baru, DP nya minimal adalah 35 %");
+                                }else if(state.equalsIgnoreCase("bekas") && downPayment < 25){
+                                    System.out.println("system : untuk motor/mobil bekas, DP nya minimal adalah 25 %");
+                                }else {
+                                    isDownPaymentValid = true;
+                                }
                             } else {
                                 System.out.println("system : nilai yang diperbolehkan dari 0 - 100");
                             }
