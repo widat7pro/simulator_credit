@@ -1,8 +1,10 @@
 package com.widat;
 
-import java.util.Calendar;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import com.widat.entity.Response;
+import com.widat.service.InstallmentCalculation;
+
+import java.text.NumberFormat;
+import java.util.*;
 
 /**
  * Hello world!
@@ -12,6 +14,7 @@ public class App
 {
     public static void main( String[] args )
     {
+        InstallmentCalculation installmentCalculation = new InstallmentCalculation();
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
         boolean isChoiceValid = false;
@@ -132,17 +135,16 @@ public class App
                                 System.out.println("system : nilai yang diperbolehkan dari 0 - 100");
                             }
                         } catch (Exception e) {
-                            System.out.println("system : mohon periksa kembali input yang Anda masukan");
+                            System.out.println("system : mohon periksa kembali input yang Anda masukan, pastikan hanya angka, tidak menggunakan %");
                         }
 
                     } while (!isDownPaymentValid);
 
-                    System.out.println(vehicle);
-                    System.out.println(state);
-                    System.out.println(year);
-                    System.out.println(loanTotal);
-                    System.out.println(loanTenor);
-                    System.out.println(downPayment);
+                    List<Response> result = installmentCalculation.calc(vehicle, loanTotal, loanTenor);
+
+                    for(Response response : result){
+                        response.print();
+                    }
 
                     do {
                         System.out.print("Kembali Ke Menu (Y/N) : ");
