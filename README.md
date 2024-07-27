@@ -2,6 +2,13 @@
 for build project, type this command :
 
 	> mvn clean install
+for skip this unit test, use this command :
+
+	> mvn clean install -DskipTests
+### how run unit test
+for running unit test, follow this command :
+
+	> mvn test
 ### how run *.jar file
 after build this project, target folder is generated automatic, for run try this program, go to inner target folder then run :
 

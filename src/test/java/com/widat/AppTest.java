@@ -1,8 +1,12 @@
 package com.widat;
 
+import com.widat.entity.Response;
+import com.widat.service.InstallmentCalculation;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import java.util.List;
 
 /**
  * Unit test for simple App.
@@ -31,8 +35,18 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
+    public void testInstallmentCalculationForMobil()
     {
-        assertTrue( true );
+        InstallmentCalculation installmentCalculation = new InstallmentCalculation();
+        List<Response> result = installmentCalculation.calc("mobil",75000000, 3);
+        assertEquals(2250000.0, result.get(0).getMonthlyInstallment());
+        assertEquals(8.0, result.get(0).getRate());
+    }
+    public void testInstallmentCalculationForMotor()
+    {
+        InstallmentCalculation installmentCalculation = new InstallmentCalculation();
+        List<Response> result = installmentCalculation.calc("motor",12000000, 1);
+        assertEquals(1090000.0, result.get(0).getMonthlyInstallment());
+        assertEquals(9.0, result.get(0).getRate());
     }
 }
