@@ -1,5 +1,6 @@
 package com.widat;
 
+import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -63,9 +64,19 @@ public class App
                     do {
                         System.out.print("Input Tahun Kendaraan : ");
                         try {
+                            Calendar calendar = Calendar.getInstance();
+                            int validYear = calendar.get(Calendar.YEAR)-1;
                             year = Integer.parseInt(scanner.nextLine());
                             if (year >= 1000 && year <= 9999) {
-                                isYearValid = true;
+                                if(state.equalsIgnoreCase("baru")) {
+                                    if (year >= validYear) {
+                                        isYearValid = true;
+                                    } else {
+                                        System.out.println("system : untuk mobil/motor baru tahun minimal adalah : " + validYear);
+                                    }
+                                }else{
+                                    isYearValid = true;
+                                }
                             } else {
                                 System.out.println("system : yang diperbolehkan hanya 4 digit");
                             }
