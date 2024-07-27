@@ -14,7 +14,7 @@ public class App
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
         boolean isChoiceValid = false;
-        simulator:
+
         do {
 
             String vehicle="";
